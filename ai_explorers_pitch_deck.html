@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Explorers - Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #232946;
+            overflow-x: hidden;
+        }
+
+        .deck-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: #fff;
+            border-radius: 18px;
+            padding: 56px;
+            margin: 40px 0;
+            border: 1px solid #e0e6ed;
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 48px rgba(44, 62, 80, 0.13);
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #232946, #16bac5, #eebbc3, #232946);
+            border-radius: 18px 18px 0 0;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #f4f6fb;
+            color: #16bac5;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            border: 1px solid #e0e6ed;
+        }
+
+        h1 {
+            font-size: 3.2em;
+            margin-bottom: 18px;
+            background: linear-gradient(90deg, #232946, #16bac5 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 28px;
+            color: #232946;
+            text-align: center;
+            position: relative;
+            font-weight: 700;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #16bac5, #eebbc3);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin: 28px 0 12px 0;
+            color: #16bac5;
+            font-weight: 700;
+        }
+
+        h4 {
+            color: #232946;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        p, li {
+            font-size: 1.13em;
+            line-height: 1.7;
+            margin-bottom: 13px;
+            color: #232946;
+            text-align: justify;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            text-align: center;
+            margin-bottom: 18px;
+            color: #16bac5;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .author {
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 24px;
+            color: #eebbc3;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: #f4f6fb;
+            padding: 26px;
+            border-radius: 13px;
+            margin: 18px 0;
+            border-left: 5px solid #16bac5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+            margin: 26px 0;
+        }
+
+        .stat-card {
+            background: #f4f6fb;
+            padding: 22px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e0e6ed;
+        }
+
+        .stat-number {
+            font-size: 2.1em;
+            font-weight: bold;
+            color: #16bac5;
+            margin-bottom: 8px;
+        }
+
+        .curriculum-day {
+            background: linear-gradient(135deg, #eebbc3 0%, #f4f6fb 100%);
+            padding: 22px;
+            border-radius: 12px;
+            margin: 16px 0;
+            border-left: 5px solid #232946;
+        }
+
+        .curriculum-day h4 {
+            color: #232946;
+            font-size: 1.15em;
+            margin-bottom: 10px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin: 26px 0;
+        }
+
+        .tool-card {
+            background: #f4f6fb;
+            padding: 18px;
+            border-radius: 9px;
+            text-align: center;
+            border: 1px solid #e0e6ed;
+        }
+
+        .pricing-tier {
+            background: linear-gradient(135deg, #f4f6fb 60%, #eebbc3 100%);
+            padding: 26px;
+            border-radius: 13px;
+            margin: 18px 0;
+            border: 2px solid #16bac5;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 2.1em;
+            font-weight: bold;
+            color: #232946;
+            margin: 12px 0;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 32px;
+            background: linear-gradient(135deg, #f4f6fb 60%, #eebbc3 100%);
+            border-radius: 18px;
+            margin: 24px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #16bac5, #232946);
+            color: #fff;
+            padding: 13px 36px;
+            border-radius: 26px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(44, 62, 80, 0.13);
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 1em;
+            margin-top: 24px;
+            color: #232946;
+        }
+
+        .contact-info a {
+            color: #16bac5;
+            text-decoration: none;
+        }
+
+        .ai-icon {
+            width: 54px;
+            height: 54px;
+            margin: 0 auto 16px auto;
+            background: linear-gradient(90deg, #16bac5, #eebbc3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #232946;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+        }
+
+        ul {
+            padding-left: 18px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 28px 12px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="deck-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide">
+            <div class="slide-number">01</div>
+            <div class="ai-icon">🤖</div>
+            <h1>AI Explorers</h1>
+            <p class="subtitle">Unleashing Creativity with Generative AI</p>
+            <div class="highlight-box">
+                <p style="text-align: center; font-size: 1.3em; margin-bottom: 0;">A Comprehensive, Multi-Session Immersive Curriculum for Digital-Age Learners Aged 8–16</p>
+            </div>
+            <p class="author">Ashkam | In Strategic Partnership with World O Tutor</p>
+        </div>
+
+        <!-- Slide 2: The Opportunity -->
+        <div class="slide">
+            <div class="slide-number">02</div>
+            <h2>The AI Revolution is Here</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <p>of jobs in 2030 don't exist today</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <p>of students use AI-powered platforms daily</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2025</div>
+                    <p>AI literacy becomes core K-12 competency</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>The Reality:</strong> Today's learners are already engaging with AI through Netflix recommendations, YouTube algorithms, Siri, and Alexa. But they're passive consumers, not active creators.</p>
+                <p><strong>The Opportunity:</strong> Transform them into AI-native thinkers who can harness these tools for creativity, problem-solving, and innovation.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Program Overview -->
+        <div class="slide">
+            <div class="slide-number">03</div>
+            <h2>AI Explorers Program</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <p>Interactive Sessions</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1hr</div>
+                    <p>Per Session</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8-16</div>
+                    <p>Years Old</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <h3>Pedagogical Approach</h3>
+                <p>✨ <strong>Constructivist Learning:</strong> Students build knowledge through hands-on experience</p>
+                <p>🎯 <strong>Experiential Design:</strong> Real-world projects with immediate application</p>
+                <p>📚 <strong>Narrative-Based:</strong> Storytelling makes complex concepts accessible</p>
+                <p>🔗 <strong>Interdisciplinary:</strong> Connects STEM, literacy, and artistic disciplines</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: 5-Day Curriculum -->
+        <div class="slide">
+            <div class="slide-number">04</div>
+            <h2>5-Day Learning Journey</h2>
+            
+            <div class="curriculum-day">
+                <h4>Day 1: AI Foundations & Machine Learning</h4>
+                <p>Discover how AI works through Google's Teachable Machine. Train your first AI model!</p>
+            </div>
+            
+            <div class="curriculum-day">
+                <h4>Day 2: Conversational AI & Prompt Engineering</h4>
+                <p>Master the art of AI dialogue with ChatGPT. Create stories, solve problems, and explore ideas.</p>
+            </div>
+            
+            <div class="curriculum-day">
+                <h4>Day 3: Creative Content Generation</h4>
+                <p>Produce art, music, and comics using DALL·E, Boomy, and Canva. Unleash your creativity!</p>
+            </div>
+            
+            <div class="curriculum-day">
+                <h4>Day 4: Building AI Applications</h4>
+                <p>Design games and chatbots using Scratch ML. No coding experience required!</p>
+            </div>
+            
+            <div class="curriculum-day">
+                <h4>Day 5: Ethics & Showcase</h4>
+                <p>Present your AI creations and discuss responsible AI use. Become an AI advocate!</p>
+            </div>
+        </div>
+
+        <!-- Slide 5: Learning Outcomes -->
+        <div class="slide">
+            <div class="slide-number">05</div>
+            <h2>What Students Will Master</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="ai-icon">🧠</div>
+                    <h3>AI Literacy</h3>
+                    <p>Understand how AI works and its real-world applications</p>
+                </div>
+                <div class="stat-card">
+                    <div class="ai-icon">✍️</div>
+                    <h3>Prompt Engineering</h3>
+                    <p>Master the skill of communicating effectively with AI</p>
+                </div>
+                <div class="stat-card">
+                    <div class="ai-icon">🎨</div>
+                    <h3>Creative Production</h3>
+                    <p>Generate original content across text, image, and audio</p>
+                </div>
+                <div class="stat-card">
+                    <div class="ai-icon">⚖️</div>
+                    <h3>AI Ethics</h3>
+                    <p>Understand bias, privacy, and responsible AI usage</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Technology Stack -->
+        <div class="slide">
+            <div class="slide-number">06</div>
+            <h2>Cutting-Edge AI Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h4>ChatGPT</h4>
+                    <p>Conversational AI</p>
+                </div>
+                <div class="tool-card">
+                    <h4>DALL·E</h4>
+                    <p>Image Generation</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Teachable Machine</h4>
+                    <p>Model Training</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Canva AI</h4>
+                    <p>Design & Publishing</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Boomy</h4>
+                    <p>Music Creation</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Scratch ML</h4>
+                    <p>Visual Programming</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>Child-Safe Environment:</strong> All tools are carefully vetted for age-appropriate content and include built-in safety features.</p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Student Deliverables -->
+        <div class="slide">
+            <div class="slide-number">07</div>
+            <h2>Tangible Learning Artifacts</h2>
+            <div class="highlight-box">
+                <h3>🎯 Digital Portfolio</h3>
+                <p>Each student creates a personalized showcase of their AI-generated projects including artwork, stories, music, and interactive tools.</p>
+            </div>
+            <div class="highlight-box">
+                <h3>🏆 Verified Certificate</h3>
+                <p>Digitally verifiable Certificate of Completion with World O Tutor branding, highlighting acquired competencies.</p>
+            </div>
+            <div class="highlight-box">
+                <h3>📚 AI Toolkit for Families</h3>
+                <p>Comprehensive resource package with activities, safety practices, and continued learning suggestions.</p>
+            </div>
+            <div class="highlight-box">
+                <h3>🌟 Public Showcase</h3>
+                <p>Optional inclusion in a digital gallery to celebrate student achievements and build confidence.</p>
+            </div>
+        </div>
+
+        <!-- Slide 8: Business Model -->
+        <div class="slide">
+            <div class="slide-number">08</div>
+            <h2>Strategic Positioning</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="ai-icon">🎯</div>
+                    <h3>Entry Point</h3>
+                    <p>High-engagement gateway into World O Tutor ecosystem</p>
+                </div>
+                <div class="stat-card">
+                    <div class="ai-icon">🚀</div>
+                    <h3>Lead Generation</h3>
+                    <p>Strategic funnel for premium tutoring services</p>
+                </div>
+                <div class="stat-card">
+                    <div class="ai-icon">👑</div>
+                    <h3>Thought Leadership</h3>
+                    <p>Position as pioneer in AI education</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>The Hook:</strong> AI is culturally resonant with both students and parents. It attracts families seeking cutting-edge education while showcasing World O Tutor's innovation leadership.</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Pricing Strategy -->
+        <div class="slide">
+            <div class="slide-number">09</div>
+            <h2>Accessible Pricing Tiers</h2>
+            
+            <div class="pricing-tier">
+                <h3>🆓 Free Access</h3>
+                <div class="price">₹0</div>
+                <p>Entry-level exposure with no financial barrier. Perfect lead magnet while maximizing inclusivity.</p>
+            </div>
+            
+            <div class="pricing-tier">
+                <h3>⭐ Premium Package</h3>
+                <div class="price">₹499 / $9.99</div>
+                <p>Includes completion certificate, exclusive toolkit, alumni badge, and priority support.</p>
+            </div>
+            
+            <div class="pricing-tier">
+                <h3>🏫 Institutional Licenses</h3>
+                <div class="price">Custom</div>
+                <p>Bulk registrations for schools and learning hubs with educator guides and admin dashboards.</p>
+            </div>
+        </div>
+
+        <!-- Slide 10: Implementation Timeline -->
+        <div class="slide">
+            <div class="slide-number">10</div>
+            <h2>Execution Roadmap</h2>
+            
+            <div class="curriculum-day">
+                <h4>Phase 1: Curriculum Design (Weeks 1-2)</h4>
+                <p>Complete educational materials, tool permissions, and educator training</p>
+            </div>
+            
+            <div class="curriculum-day">
+                <h4>Phase 2: Marketing Launch (Weeks 3-4)</h4>
+                <p>Campaign development across social media, parent networks, and mailing lists</p>
+            </div>
+            
+            <div class="curriculum-day">
+                <h4>Phase 3: Program Delivery (Week 5)</h4>
+                <p>Execute live sessions with real-time engagement analytics and feedback capture</p>
+            </div>
+            
+            <div class="curriculum-day">
+                <h4>Phase 4: Conversion & Growth (Weeks 6-8)</h4>
+                <p>Lead nurturing, testimonial collection, and transition to long-term programs</p>
+            </div>
+        </div>
+
+        <!-- Slide 11: Call to Action -->
+        <div class="slide">
+            <div class="slide-number">11</div>
+            <h2>Let's Shape the Future Together</h2>
+            <div class="cta-section">
+                <h3>🚀 Ready to Launch AI Explorers?</h3>
+                <p style="font-size: 1.3em; margin: 20px 0;">Join us in creating a generation of AI-native thinkers who don't just consume technology—they create with it.</p>
+                
+                <div style="margin: 30px 0;">
+                    <div class="stat-card" style="display: inline-block; margin: 10px;">
+                        <div class="stat-number">∞</div>
+                        <p>Potential Impact</p>
+                    </div>
+                    <div class="stat-card" style="display: inline-block; margin: 10px;">
+                        <div class="stat-number">1st</div>
+                        <p>Mover Advantage</p>
+                    </div>
+                    <div class="stat-card" style="display: inline-block; margin: 10px;">
+                        <div class="stat-number">100%</div>
+                        <p>Future-Ready</p>
+                    </div>
+                </div>
+                
+                <p style="font-size: 1.1em; font-style: italic;">"Every child deserves to use AI not just to consume content—but to express, explore, and build with imagination and integrity."</p>
+            </div>
+            
+            <div class="contact-info">
+                <p><strong>Ready to discuss next steps?</strong></p>
+                <p>📧 <a href="mailto:ashkam58@gmail.com">ashkam58@gmail.com</a></p>
+                <p>🌐 <a href="http://www.worldotutor.com">www.worldotutor.com</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
